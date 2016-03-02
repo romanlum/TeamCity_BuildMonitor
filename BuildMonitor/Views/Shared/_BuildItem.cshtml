@@ -1,7 +1,7 @@
 ﻿@model BuildMonitor.Models.Home.Build
 
 <div id="BuildDiv-@Model.Id" class="col-sm-6 col-md-4 col-lg-3">
-	<div class="well">
+	<div class="well buildItemWell">
 		<h4 class="buildTitle text-cutoff">@Model.Name</h4>
 		<h2 class="status-@Model.Status text-cutoff">@Model.StatusText</h2>
 		<p class="buildInfo text-cutoff">@Model.StatusDescription</p>

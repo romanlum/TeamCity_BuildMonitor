@@ -6,7 +6,7 @@
 }
 
 body {
-	background-color: #272B30;
+	background-color: #1e1e1e;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	font-family: kenzo;
@@ -46,7 +46,7 @@ textarea {
 /* Custom */
 
 html * {
-	font-family: kenzo !important;
+	font-family: Segoe UI !important;
 }
 
 .navbar-space {
@@ -60,8 +60,9 @@ html * {
     clear:both;
 }
 .projectTitle {
-	color: #777;
+	color: #c47b00;
 	margin-top: -12px;
+    margin-bottom: 20px;
 	display: inline-block;
 }
 
@@ -69,6 +70,11 @@ html * {
 	font-size: 30px;
 	color: #eee;
 	margin-top: -5px;
+}
+
+.buildItemWell {
+    background-color: #2d2d30;
+    border: 1px solid #777;
 }
 
 .buildInfo {
@@ -162,30 +168,37 @@ html * {
 /* Chrome, Safari, Opera */
 @-webkit-keyframes pulsate {
 	0% {
-		color: #CFC291;
+		/*color: #CFC291;*/
+		color: #76b7f2;
 	}
 
 	50% {
-		color: #FFF6C5;
+		/*color: #FFF6C5;*/
+		
+        color: #007acc;
 	}
 
 	100% {
-		color: #CFC291;
+		/*color: #CFC291;*/
+		color: #056db2;
 	}
 }
 
 /* Color animation */
 @keyframes pulsate {
 	0% {
-		color: #CFC291;
+		/*color: #CFC291;*/
+		color: #76b7f2;
 	}
 
 	50% {
-		color: #FFF6C5;
+		/*color: #FFF6C5;*/
+		color: #007acc;
 	}
 
 	100% {
-		color: #CFC291;
+		/*color: #CFC291;*/
+		color: #056db2;
 	}
 }
 

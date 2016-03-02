@@ -1,6 +1,6 @@
 ﻿@model BuildMonitor.Models.Home.BuildMonitorViewModel
 @{
-	ViewBag.Title = "Build Monitor";
+	ViewBag.Title = "TeamCity Build Monitor";
 }
 
 @foreach (var project in Model.Projects)
@@ -11,7 +11,7 @@
 	}
 
 	<div class="projectRow">
-		<h3 class="projectTitle">▪▪▪ @project.Name ▪▪▪</h3>
+		<h3 class="projectTitle">@project.Name</h3>
 		<div class="row">
 			@foreach (var build in project.Builds)
 			{
