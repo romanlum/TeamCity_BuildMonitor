@@ -43,6 +43,14 @@ textarea {
 	max-width: 280px;
 }
 
+/* Override the default bootstrap background for the progress bar */
+.progress {
+    background-color: transparent;
+    height: 5px;
+    margin-bottom: 12px;
+    margin-top: 5px;
+}
+
 /* Custom */
 
 html * {
@@ -61,9 +69,11 @@ html * {
 }
 .projectTitle {
 	color: #c47b00;
-	margin-top: -12px;
+	margin-top: 15px;
     margin-bottom: 20px;
 	display: inline-block;
+    font-family: Segoe UI Light !important;
+    font-size: 36px;
 }
 
 .buildTitle {
@@ -90,6 +100,7 @@ html * {
 .buildInfoBranch {
 	font-size: 20px;
 	color: #777;
+    margin-top: 2px;
 	margin-bottom: 2px;
 }
 
