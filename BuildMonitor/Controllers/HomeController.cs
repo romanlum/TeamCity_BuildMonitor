@@ -11,22 +11,33 @@ namespace BuildMonitor.Controllers
 	{
 		private readonly IBuildMonitorModelHandler modelHandler;
 
-		public HomeController()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HomeController"/> class.
+        /// </summary>
+        public HomeController()
 		{
-			modelHandler = new DefaultBuildMonitorModelHandler();
-			//modelHandler = new CustomBuildMonitorModelHandler();
+            modelHandler = new DefaultBuildMonitorModelHandler();
+            //modelHandler = new CustomBuildMonitorModelHandler();
 
-			RequestHelper.Username = ConfigurationManager.AppSettings["teamcity_username"];
+            RequestHelper.Username = ConfigurationManager.AppSettings["teamcity_username"];
 			RequestHelper.Password = ConfigurationManager.AppSettings["teamcity_password"];
 		}
 
-		public ActionResult Index()
+        /// <summary>
+        /// Indexes this instance.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Index()
 		{
 			var model = modelHandler.GetModel();
 			return View(model);
 		}
 
-		public JsonResult GetBuilds()
+        /// <summary>
+        /// Gets the builds.
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult GetBuilds()
 		{
 			var model = modelHandler.GetModel();
 
@@ -46,7 +57,13 @@ namespace BuildMonitor.Controllers
 			return Json(result, JsonRequestBehavior.AllowGet);
 		}
 
-		protected string RenderPartialViewToString(string viewName, object model)
+        /// <summary>
+        /// Renders the partial view to string.
+        /// </summary>
+        /// <param name="viewName">Name of the view.</param>
+        /// <param name="model">The model.</param>
+        /// <returns></returns>
+        protected string RenderPartialViewToString(string viewName, object model)
 		{
 			if (string.IsNullOrEmpty(viewName))
 			{

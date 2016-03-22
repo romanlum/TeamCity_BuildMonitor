@@ -6,7 +6,10 @@ namespace BuildMonitor.Models.Home
 	{
 		public List<Project> Projects { get; set; }
 
-		public BuildMonitorViewModel()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BuildMonitorViewModel"/> class.
+        /// </summary>
+        public BuildMonitorViewModel()
 		{
 			Projects = new List<Project>();
 		}

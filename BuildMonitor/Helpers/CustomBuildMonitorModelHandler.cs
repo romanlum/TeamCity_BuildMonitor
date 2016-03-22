@@ -11,12 +11,18 @@ namespace BuildMonitor.Helpers
 	{
 		private Settings settings;
 
-		public CustomBuildMonitorModelHandler()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CustomBuildMonitorModelHandler"/> class.
+        /// </summary>
+        public CustomBuildMonitorModelHandler()
 		{
 			InitializeSettings();
 		}
 
-		private void InitializeSettings()
+        /// <summary>
+        /// Initializes the settings.
+        /// </summary>
+        private void InitializeSettings()
 		{
 			if (settings != null)
 			{
@@ -31,7 +37,11 @@ namespace BuildMonitor.Helpers
 			}
 		}
 
-		public override BuildMonitorViewModel GetModel()
+        /// <summary>
+        /// Gets the model.
+        /// </summary>
+        /// <returns></returns>
+        public override BuildMonitorViewModel GetModel()
 		{
 			var model = new BuildMonitorViewModel();
 
@@ -50,23 +60,36 @@ namespace BuildMonitor.Helpers
 			return model;
 		}
 
-		private void AddBuilds(ref Project project, Group group)
+        /// <summary>
+        /// Adds the builds.
+        /// </summary>
+        /// <param name="project">The project.</param>
+        /// <param name="group">The group.</param>
+        private void AddBuilds(ref Project project, Group group)
 		{
 			foreach (var job in group.Jobs)
 			{
 				var buildTypeJson = GetJsonBuildTypeById(job.Id);
 
-				var build = new Build();
-				build.Id = buildTypeJson.id;
-				build.Name = job.Text ?? buildTypeJson.name;
+                var build = new Build()
+                {
+                    Id = buildTypeJson.id,
+                    Name = job.Text ?? buildTypeJson.name
+                };
 
-				var url = string.Format(buildStatusUrl, build.Id);
+                var url = string.Format(buildStatusUrl, build.Id);
 				var buildStatusJsonString = RequestHelper.GetJson(url);
 				buildStatusJson = JsonConvert.DeserializeObject<dynamic>(buildStatusJsonString ?? string.Empty);
 
-                build.Branch = (buildStatusJson != null) ? (buildStatusJson.branchName ?? "default") : "unknown";
-                build.Status = GetBuildStatusForRunningBuild(build.Id);
+                build.Branch = (buildStatusJson != null) 
+                    ? (buildStatusJson.branchName ?? "default") 
+                    : "unknown";
 
+                build.Number = (buildStatusJson != null)
+                    ? (buildStatusJson.number ?? "default")
+                    : "unknown";
+
+                build.Status = GetBuildStatusForRunningBuild(build.Id);
 				if (build.Status == BuildStatus.Running)
 				{
 					UpdateBuildStatusFromRunningBuildJson(build.Id);
@@ -91,7 +114,12 @@ namespace BuildMonitor.Helpers
 			}
 		}
 
-		private dynamic GetJsonBuildTypeById(string id)
+        /// <summary>
+        /// Gets the json build type by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
+        private dynamic GetJsonBuildTypeById(string id)
 		{
 			var count = (int)buildTypesJson.count;
 			for (int i = 0; i < count; i++)
@@ -105,7 +133,12 @@ namespace BuildMonitor.Helpers
 			return null;
 		}
 
-		private bool IsBuildQueued(string buildId)
+        /// <summary>
+        /// Determines whether [is build queued] [the specified build identifier].
+        /// </summary>
+        /// <param name="buildId">The build identifier.</param>
+        /// <returns></returns>
+        private bool IsBuildQueued(string buildId)
 		{
 			try
 			{
@@ -127,7 +160,11 @@ namespace BuildMonitor.Helpers
 			return false;
 		}
 
-		private string GetUpdatedBy()
+        /// <summary>
+        /// Gets the updated by.
+        /// </summary>
+        /// <returns></returns>
+        private string GetUpdatedBy()
 		{
 			try
 			{

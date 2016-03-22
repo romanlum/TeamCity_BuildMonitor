@@ -5,7 +5,11 @@ namespace BuildMonitor.Helpers
 {
 	public class DefaultBuildMonitorModelHandler : BuildMonitorModelHandlerBase
 	{
-		public override BuildMonitorViewModel GetModel()
+        /// <summary>
+        /// Gets the model.
+        /// </summary>
+        /// <returns></returns>
+        public override BuildMonitorViewModel GetModel()
 		{
 			var model = new BuildMonitorViewModel();
 
@@ -27,29 +31,36 @@ namespace BuildMonitor.Helpers
 			return model;
 		}
 
-		private void AddBuilds(ref Project project)
+        /// <summary>
+        /// Adds the builds.
+        /// </summary>
+        /// <param name="project">The project.</param>
+        private void AddBuilds(ref Project project)
 		{
 			var count = (int)buildTypesJson.count;
 			for (int i = 0; i < count; i++)
 			{
 				var buildTypeJson = buildTypesJson.buildType[i];
-
 				if (buildTypeJson.projectId != project.Id)
 				{
 					continue;
 				}
 
-				var build = new Build();
-				build.Id = buildTypeJson.id;
-				build.Name = buildTypeJson.name;
+                var build = new Build()
+                {
+                    Id = buildTypeJson.id,
+                    Name = buildTypeJson.name
+                };
 
-				var url = string.Format(buildStatusUrl, build.Id);
+                var url = string.Format(buildStatusUrl, build.Id);
 				var buildStatusJsonString = RequestHelper.GetJson(url);
 				buildStatusJson = JsonConvert.DeserializeObject<dynamic>(buildStatusJsonString ?? string.Empty);
 
-                build.Branch = (buildStatusJson != null) ? (buildStatusJson.branchName ?? "default") : "unknown";
-                build.Status = GetBuildStatusForRunningBuild(build.Id);
+                build.Branch = (buildStatusJson != null) 
+                    ? (buildStatusJson.branchName ?? "default") 
+                    : "unknown";
 
+                build.Status = GetBuildStatusForRunningBuild(build.Id);
 				if (build.Status == BuildStatus.Running)
 				{
 					UpdateBuildStatusFromRunningBuildJson(build.Id);
@@ -75,7 +86,12 @@ namespace BuildMonitor.Helpers
 			}
 		}
 
-		private bool IsBuildQueued(string buildId)
+        /// <summary>
+        /// Determines whether [is build queued] [the specified build identifier].
+        /// </summary>
+        /// <param name="buildId">The build identifier.</param>
+        /// <returns></returns>
+        private bool IsBuildQueued(string buildId)
 		{
 			try
 			{
@@ -97,7 +113,11 @@ namespace BuildMonitor.Helpers
 			return false;
 		}
 
-		private string GetUpdatedBy()
+        /// <summary>
+        /// Gets the updated by.
+        /// </summary>
+        /// <returns></returns>
+        private string GetUpdatedBy()
 		{
 			try
 			{

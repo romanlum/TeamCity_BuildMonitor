@@ -9,7 +9,12 @@ namespace BuildMonitor.Helpers
 		public static string Username { get; set; }
 		public static string Password { get; set; }
 
-		public static string GetJson(string url)
+        /// <summary>
+        /// Gets the json.
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <returns></returns>
+        public static string GetJson(string url)
 		{
 			try
 			{
