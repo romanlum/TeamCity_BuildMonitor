@@ -108,13 +108,20 @@ html * {
 }
 
 .buildInfo {
-	margin-top: -8px;
+	margin-top: -6px;
 	margin-bottom: -3px;
 	color: #777;
 }
 
 .buildInfoHighlight {
 	color: #999;
+}
+
+.buildInfoBuildNumber{
+	font-size: 20px;
+	color: #777;
+    margin-top: 2px;
+	margin-bottom: -8px;
 }
 
 .buildInfoBranch {

@@ -49,15 +49,17 @@ namespace BuildMonitor.Helpers
                 var build = new Build()
                 {
                     Id = buildTypeJson.id,
-                    Name = buildTypeJson.name
+                    Name = buildTypeJson.name,
+                    Description = buildTypeJson.description,
+                    ProjectName = buildTypeJson.projectName
                 };
 
                 var url = string.Format(buildStatusUrl, build.Id);
 				var buildStatusJsonString = RequestHelper.GetJson(url);
 				buildStatusJson = JsonConvert.DeserializeObject<dynamic>(buildStatusJsonString ?? string.Empty);
 
-                build.Branch = (buildStatusJson != null) 
-                    ? (buildStatusJson.branchName ?? "default") 
+                build.Branch = (buildStatusJson != null)
+                    ? (buildStatusJson.branchName ?? "default")
                     : "unknown";
 
                 build.Status = GetBuildStatusForRunningBuild(build.Id);
@@ -66,7 +68,8 @@ namespace BuildMonitor.Helpers
 					UpdateBuildStatusFromRunningBuildJson(build.Id);
 				}
 
-				build.UpdatedBy = GetUpdatedBy();
+                build.Number = (string)buildStatusJson.number;
+                build.UpdatedBy = GetUpdatedBy();
 				build.LastRunText = GetLastRunText();
 				build.IsQueued = IsBuildQueued(build.Id);
 				build.StatusDescription = (string)buildStatusJson.statusText;

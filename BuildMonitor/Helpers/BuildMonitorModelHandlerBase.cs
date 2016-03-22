@@ -14,25 +14,34 @@ namespace BuildMonitor.Helpers
 		protected readonly string buildTypesUrl;
 		protected readonly string runningBuildsUrl;
 		protected readonly string buildStatusUrl;
-		protected readonly string buildQueueUrl;
+        protected readonly string buildStatisticsUrl;
+        protected readonly string buildQueueUrl;
 		protected Dictionary<string, dynamic> runningBuilds;
 
 		protected dynamic projectsJson;
 		protected dynamic buildTypesJson;
 		protected dynamic buildQueueJson;
 		protected dynamic buildStatusJson;
+        protected dynamic buildStatisticsJson;
 
-		protected BuildMonitorModelHandlerBase()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BuildMonitorModelHandlerBase"/> class.
+        /// </summary>
+        protected BuildMonitorModelHandlerBase()
 		{
 			teamCityUrl = ConfigurationManager.AppSettings["teamcity_api_url"];
 			projectsUrl = teamCityUrl + ConfigurationManager.AppSettings["teamcity_api_projects"];
 			buildTypesUrl = teamCityUrl + ConfigurationManager.AppSettings["teamcity_api_buildtypes"];
 			runningBuildsUrl = teamCityUrl + ConfigurationManager.AppSettings["teamcity_api_runningbuilds"];
 			buildStatusUrl = teamCityUrl + ConfigurationManager.AppSettings["teamcity_api_buildstatus"];
-			buildQueueUrl = teamCityUrl + ConfigurationManager.AppSettings["teamcity_api_buildqueue"];
+            buildStatisticsUrl = teamCityUrl + ConfigurationManager.AppSettings["teamcity_api_buildstatistics"];
+            buildQueueUrl = teamCityUrl + ConfigurationManager.AppSettings["teamcity_api_buildqueue"];
 		}
 
-		protected void GetTeamCityBuildsJson()
+        /// <summary>
+        /// Gets the team city builds json.
+        /// </summary>
+        protected void GetTeamCityBuildsJson()
 		{
 			var projectsJsonString = RequestHelper.GetJson(projectsUrl);
 			projectsJson = JsonConvert.DeserializeObject<dynamic>(projectsJsonString);
@@ -46,7 +55,10 @@ namespace BuildMonitor.Helpers
 			UpdateRunningBuilds();
 		}
 
-		private void UpdateRunningBuilds()
+        /// <summary>
+        /// Updates the running builds.
+        /// </summary>
+        private void UpdateRunningBuilds()
 		{
 			try
 			{
@@ -74,12 +86,21 @@ namespace BuildMonitor.Helpers
 			}
 		}
 
-		protected void UpdateBuildStatusFromRunningBuildJson(string buildId)
+        /// <summary>
+        /// Updates the build status from running build json.
+        /// </summary>
+        /// <param name="buildId">The build identifier.</param>
+        protected void UpdateBuildStatusFromRunningBuildJson(string buildId)
 		{
 			buildStatusJson = runningBuilds[buildId];
 		}
 
-		protected BuildStatus GetBuildStatusForRunningBuild(string buildId)
+        /// <summary>
+        /// Gets the build status for running build.
+        /// </summary>
+        /// <param name="buildId">The build identifier.</param>
+        /// <returns></returns>
+        protected BuildStatus GetBuildStatusForRunningBuild(string buildId)
 		{
 			if (runningBuilds.ContainsKey(buildId))
 			{
@@ -107,7 +128,12 @@ namespace BuildMonitor.Helpers
 			}
 		}
 
-		protected string[] GetRunningBuildBranchAndProgress(string buildId)
+        /// <summary>
+        /// Gets the running build branch and progress.
+        /// </summary>
+        /// <param name="buildId">The build identifier.</param>
+        /// <returns></returns>
+        protected string[] GetRunningBuildBranchAndProgress(string buildId)
 		{
 			var result = new[]
             {
@@ -131,7 +157,11 @@ namespace BuildMonitor.Helpers
 
 		public abstract BuildMonitorViewModel GetModel();
 
-		protected string GetLastRunText()
+        /// <summary>
+        /// Gets the last run text.
+        /// </summary>
+        /// <returns></returns>
+        protected string GetLastRunText()
 		{
 			const int second = 1;
 			const int minute = 60 * second;
