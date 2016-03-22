@@ -9,15 +9,16 @@
 </head>
 <body>
 	<div>
+        <div class="container-full">
+            <header>
+                <span><img width="40" height="40" alt="TeamCity Logo" src="~/Content/teamcity.svg"></span>
+                <span class="title">TeamCity Build Monitor</span>
+                <span class="title2" id="last-updated" style="float: right;">Updated: @DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")</span>
+            </header>
+            <hr class="hr"/>
+        </div>
 		<div class="container-full">
 			@RenderBody()
-		</div>
-		<div class="container-full">
-			<hr />
-			<footer>
-				<span>TeamCity BuildMonitor</span>
-				<span id="last-updated" style="float: right">Updated @DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")</span>
-			</footer>
 		</div>
 	</div>
 

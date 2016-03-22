@@ -23,14 +23,28 @@ a {
 	src: url('../fonts/kenzo.eot?#iefix') format('embedded-opentype'), url('../fonts/kenzo.woff') format('woff'), url('../fonts/kenzo.ttf') format('truetype');
 }
 
+.title {
+	color: #EEEEEE;
+    font-family: Segoe UI Light !important;
+    font-size: 24px;
+    padding-left: 15px;
+    padding-top: 7px;
+}
+.title2 {
+	color: #3C8BC1;
+    font-family: Segoe UI Light !important;
+    font-size: 20px;
+    padding-top: 6px;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
 	padding-left: 15px;
 	padding-right: 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
+/* Override the default bootstrap behavior where horizontal description lists
+   will truncate terms that are too long to fit in the left column
 */
 .dl-horizontal dt {
 	white-space: normal;
@@ -49,6 +63,12 @@ textarea {
     height: 5px;
     margin-bottom: 12px;
     margin-top: 5px;
+}
+
+.hr {
+    border-top: 1px solid #646464;
+    margin-top: 22px;
+    margin-bottom: 10px
 }
 
 /* Custom */
@@ -185,7 +205,7 @@ html * {
 
 	50% {
 		/*color: #FFF6C5;*/
-		
+
         color: #007acc;
 	}
 
