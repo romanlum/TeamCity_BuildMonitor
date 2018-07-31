@@ -1,6 +1,8 @@
 TeamCity BuildMonitor
 ===================
 
+[![Build Status](https://travis-ci.com/romanlum/TeamCity_BuildMonitor.svg?branch=master)](https://travis-ci.com/romanlum/TeamCity_BuildMonitor)
+
 A simple build monitor for TeamCity using ASP.NET MVC Core with the following features:
 
 - Build configuration name
