@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BuildMonitor.Models.Home.Settings
+namespace BuildMonitorCore.Models.Home.Settings
 {
 	public class Settings
 	{

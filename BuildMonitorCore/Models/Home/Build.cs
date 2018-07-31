@@ -1,4 +1,4 @@
-namespace BuildMonitor.Models.Home
+namespace BuildMonitorCore.Models.Home
 {
 	public class Build
 	{

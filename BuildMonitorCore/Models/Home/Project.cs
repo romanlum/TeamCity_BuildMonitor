@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BuildMonitor.Models.Home
+namespace BuildMonitorCore.Models.Home
 {
 	public class Project
 	{

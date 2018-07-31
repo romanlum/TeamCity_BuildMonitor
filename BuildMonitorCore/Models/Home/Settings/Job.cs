@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace BuildMonitor.Models.Home.Settings
+namespace BuildMonitorCore.Models.Home.Settings
 {
 	public class Job
 	{

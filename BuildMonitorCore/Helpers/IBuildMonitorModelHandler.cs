@@ -1,4 +1,4 @@
-﻿using BuildMonitor.Models.Home;
+﻿using BuildMonitorCore.Models.Home;
 
 namespace BuildMonitorCore.Helpers
 {

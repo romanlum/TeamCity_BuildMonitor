@@ -1,5 +1,5 @@
 ﻿using System;
-using BuildMonitor.Models.Home;
+using BuildMonitorCore.Models.Home;
 using BuildMonitorCore.Models;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;

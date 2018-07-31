@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using BuildMonitor.Models.Home;
+using BuildMonitorCore.Models.Home;
 using BuildMonitorCore.Models;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;

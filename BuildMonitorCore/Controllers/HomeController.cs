@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using BuildMonitor.Models.Home;
+using BuildMonitorCore.Models.Home;
 using BuildMonitorCore.Helpers;
 using BuildMonitorCore.Models;
 using Microsoft.AspNetCore.Mvc;

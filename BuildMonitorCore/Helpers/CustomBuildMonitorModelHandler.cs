@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Xml.Serialization;
-using BuildMonitor.Models.Home;
-using BuildMonitor.Models.Home.Settings;
+using BuildMonitorCore.Models.Home;
 using BuildMonitorCore.Models;
+using BuildMonitorCore.Models.Home.Settings;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
