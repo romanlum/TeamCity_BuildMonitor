@@ -27,7 +27,7 @@ namespace BuildMonitorCore.Helpers
 			GetTeamCityBuildsJson();
 
 			var count = (int)ProjectsJson.count;
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < count; i++)
 			{
 				var project = new Project();
 				var projectJson = ProjectsJson.project[i];
