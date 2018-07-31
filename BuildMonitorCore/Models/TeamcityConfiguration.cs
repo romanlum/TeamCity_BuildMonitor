@@ -11,7 +11,9 @@ namespace BuildMonitorCore.Models
     /// </summary>
     public class TeamCityConfiguration
     {
-        public string TeamCityUrl { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string ServerUrl { get; set; }
         public string ProjectsUrl { get; set; }
         public string BuildTypesUrl { get; set; }
         public string RunningBuildsUrl { get; set; }

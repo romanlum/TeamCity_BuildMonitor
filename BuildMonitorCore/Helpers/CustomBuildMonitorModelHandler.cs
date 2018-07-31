@@ -82,7 +82,7 @@ namespace BuildMonitorCore.Helpers
                     ProjectName = buildTypeJson.projectName
                 };
 
-                var url = string.Format(TeamCityConfig.BuildStatusUrl, build.Id);
+                var url = TeamCityConfig.ServerUrl + string.Format(TeamCityConfig.BuildStatusUrl, build.Id);
 				var buildStatusJsonString = RequestHelper.GetJson(url);
 				BuildStatusJson = JsonConvert.DeserializeObject<dynamic>(buildStatusJsonString ?? string.Empty);
 

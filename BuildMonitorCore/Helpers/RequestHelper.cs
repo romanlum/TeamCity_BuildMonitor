@@ -32,9 +32,9 @@ namespace BuildMonitorCore.Helpers
 				var reader = new StreamReader(response);
 				return reader.ReadToEnd();
 			}
-			catch
+			catch(Exception e)
 			{
-				return null;
+			    throw e;
 			}
 		}
 	}

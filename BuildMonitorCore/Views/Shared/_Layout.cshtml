@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+	<script src="js/modernizr.min.js"></script>
+</head>
+<body>
+	<div>
+        <div class="container-full">
+            <header>
+                <span><img width="40" height="40" alt="TeamCity Logo" src="~/img/teamcity.svg"></span>
+                <span class="title">TeamCity Build Monitor</span>
+                <span class="title2" id="last-updated" style="float: right;">Updated: @DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")</span>
+            </header>
+            <hr class="hr"/>
+        </div>
+		<div class="container-full">
+			@RenderBody()
+		</div>
+	</div>
+
+    <script src="js/site.min.js"></script>
+</body>
+</html>

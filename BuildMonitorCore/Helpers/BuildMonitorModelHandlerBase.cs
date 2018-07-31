@@ -32,13 +32,13 @@ namespace BuildMonitorCore.Helpers
         /// </summary>
         protected void GetTeamCityBuildsJson()
 		{
-			var projectsJsonString = RequestHelper.GetJson(TeamCityConfig.ProjectsUrl);
+			var projectsJsonString = RequestHelper.GetJson(TeamCityConfig.ServerUrl+TeamCityConfig.ProjectsUrl);
 			ProjectsJson = JsonConvert.DeserializeObject<dynamic>(projectsJsonString);
 
-			var buildTypesJsonString = RequestHelper.GetJson(TeamCityConfig.BuildTypesUrl);
+			var buildTypesJsonString = RequestHelper.GetJson(TeamCityConfig.ServerUrl + TeamCityConfig.BuildTypesUrl);
 			BuildTypesJson = JsonConvert.DeserializeObject<dynamic>(buildTypesJsonString);
 
-			var buildQueueJsonString = RequestHelper.GetJson(TeamCityConfig.BuildQueueUrl);
+			var buildQueueJsonString = RequestHelper.GetJson(TeamCityConfig.ServerUrl + TeamCityConfig.BuildQueueUrl);
 			BuildQueueJson = buildQueueJsonString != null ? JsonConvert.DeserializeObject<dynamic>(buildQueueJsonString) : null;
 
 			UpdateRunningBuilds();
@@ -53,7 +53,7 @@ namespace BuildMonitorCore.Helpers
 			{
 				RunningBuilds = new Dictionary<string, dynamic>();
 
-				var runningBuildsJsonString = RequestHelper.GetJson(TeamCityConfig.RunningBuildsUrl);
+				var runningBuildsJsonString = RequestHelper.GetJson(TeamCityConfig.ServerUrl + TeamCityConfig.RunningBuildsUrl);
 				var runningBuildsJson = runningBuildsJsonString != null ? JsonConvert.DeserializeObject<dynamic>(runningBuildsJsonString) : null;
 
 				var count = (int)runningBuildsJson.count;
@@ -62,7 +62,7 @@ namespace BuildMonitorCore.Helpers
 					var buildJson = runningBuildsJson.build[i];
 
 					var buildId = (string)buildJson.buildTypeId;
-					var url = TeamCityConfig.TeamCityUrl + (string)buildJson.href;
+					var url = TeamCityConfig.ServerUrl + (string)buildJson.href;
 
 					var buildStatusJsonString = RequestHelper.GetJson(url);
 					var buildStatusJson = JsonConvert.DeserializeObject<dynamic>(buildStatusJsonString ?? string.Empty);

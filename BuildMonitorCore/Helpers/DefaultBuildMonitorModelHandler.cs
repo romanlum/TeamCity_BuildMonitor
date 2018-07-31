@@ -65,7 +65,7 @@ namespace BuildMonitorCore.Helpers
                     ProjectName = buildTypeJson.projectName
                 };
 
-                var url = string.Format(TeamCityConfig.BuildStatusUrl, build.Id);
+                var url = TeamCityConfig.ServerUrl + string.Format(TeamCityConfig.BuildStatusUrl, build.Id);
 				var buildStatusJsonString = RequestHelper.GetJson(url);
 				BuildStatusJson = JsonConvert.DeserializeObject<dynamic>(buildStatusJsonString ?? string.Empty);
 
@@ -144,7 +144,7 @@ namespace BuildMonitorCore.Helpers
 
 				if (triggerType == "vcs" && BuildStatusJson.lastChanges != null)
 				{
-					var result = RequestHelper.GetJson(TeamCityConfig.TeamCityUrl + BuildStatusJson.lastChanges.change[0].href);
+					var result = RequestHelper.GetJson(TeamCityConfig.ServerUrl + BuildStatusJson.lastChanges.change[0].href);
 					var change = JsonConvert.DeserializeObject<dynamic>(result);
 
 					return (string)change.user.name;
