@@ -14,15 +14,14 @@
 	},
 	{
 		"outputFileName": "wwwroot/js/site.min.js",
-		"inputFiles": [
-			"wwwroot/lib/jquery-2.2.1.js",
-			"wwwroot/lib/jquery-validate.js",
-			"wwwroot/lib/jquery-validate-vsdoc.js",
-			"wwwroot/lib/jquery.validate.unobtrusive.js",
-			"wwwroot/lib/Project/home.js",
-			"wwwroot/lib/bootstrap.js",
-			"wwwroot/lib/respond.js"
-		],
+					"inputFiles": [
+
+						"wwwroot/lib/jquery-2.2.1.js",
+						"wwwroot/lib/jquery-validate.js",
+						"wwwroot/lib/bootstrap.js",
+						"wwwroot/lib/respond.js",
+						"wwwroot/lib/Project/home.js"
+					],
 		"minify": {
 			"enabled": true,
 			"renameLocals": true

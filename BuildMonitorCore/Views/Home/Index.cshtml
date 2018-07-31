@@ -1,8 +1,9 @@
 ﻿@model BuildMonitor.Models.Home.BuildMonitorViewModel
-
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+	ViewBag.Title = "TeamCity Build Monitor";
 }
 
-<h2>title</h2>
+<div id="projects">
+    <partial name="_Projects" model="@Model" />
+</div>
+

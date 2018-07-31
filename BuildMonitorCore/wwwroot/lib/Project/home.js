@@ -2,19 +2,14 @@
 	$('body').css('display', 'none');
 	$('body').fadeIn(1000);
 
-	setInterval(function () {
-		$.ajax({
-			url: '/Home/GetBuilds',
-			success: function (data) {
-				$.each(data.Builds, function (i, build) {
-					var divId = "#BuildDiv-" + build.Id;
-					var buildDiv = $(divId);
-					buildDiv.replaceWith(build.Content);
-				});
+    setInterval(function () {
 
-				$("#last-updated").text(data.UpdatedText);
-			},
-			cache: false
-		});
+        $.ajax({
+            url: '/Home/Update',
+            success: function (data) {
+                $("#projects").html(data);
+            }
+        });
+        
 	}, 15000);
 });
