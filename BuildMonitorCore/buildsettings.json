@@ -1,0 +1,14 @@
+﻿{
+	"BuildSettings": {
+		"Groups": [
+			{
+				"name": "Test",
+				"Jobs": [
+					{
+						"id": "TestId"
+					}
+				]
+			}
+		]
+	}
+}
