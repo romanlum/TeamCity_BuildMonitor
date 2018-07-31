@@ -34,9 +34,11 @@ namespace BuildMonitorCore
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.Configure<Settings>(Configuration.GetSection("BuildSettings"));
-            
             services.Configure<TeamCityConfiguration>(Configuration.GetSection("TeamcityConfiguration"));
-            services.AddScoped<IBuildMonitorModelHandler, CustomBuildMonitorModelHandler>();
+
+            //Here you can switch between CustomBuildMonitorModelHandler or DefaultBuildMonitorModelHandler
+            services.AddScoped<IBuildMonitorModelHandler, DefaultBuildMonitorModelHandler>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             
         }
