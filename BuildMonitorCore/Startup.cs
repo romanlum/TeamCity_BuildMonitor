@@ -1,5 +1,6 @@
 ﻿using BuildMonitorCore.Helpers;
 using BuildMonitorCore.Models;
+using BuildMonitorCore.Models.Home.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -32,14 +33,18 @@ namespace BuildMonitorCore
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.Configure<Settings>(Configuration.GetSection("BuildSettings"));
+            
             services.Configure<TeamCityConfiguration>(Configuration.GetSection("TeamcityConfiguration"));
-            services.AddScoped<IBuildMonitorModelHandler, DefaultBuildMonitorModelHandler>();
+            services.AddScoped<IBuildMonitorModelHandler, CustomBuildMonitorModelHandler>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

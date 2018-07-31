@@ -16,29 +16,13 @@ namespace BuildMonitorCore.Helpers
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomBuildMonitorModelHandler"/> class.
         /// </summary>
-        public CustomBuildMonitorModelHandler(IOptions<TeamCityConfiguration> config)
+        public CustomBuildMonitorModelHandler(IOptions<TeamCityConfiguration> config, IOptions<Settings> settings)
         :base(config)
-		{
-			InitializeSettings();
+        {
+            this.settings = settings.Value;
 		}
 
-        /// <summary>
-        /// Initializes the settings.
-        /// </summary>
-        private void InitializeSettings()
-		{
-			if (settings != null)
-			{
-				return;
-			}
-
-			var path = AppDomain.CurrentDomain.BaseDirectory + "/App_Data/Settings.xml";
-			using (var reader = new StreamReader(path))
-			{
-				var serializer = new XmlSerializer(typeof(Settings));
-				settings = (Settings)serializer.Deserialize(reader);
-			}
-		}
+   
 
         /// <summary>
         /// Gets the model.
